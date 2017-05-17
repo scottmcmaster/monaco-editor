@@ -1,0 +1,21 @@
+// This is some DAX
+evaluate
+(
+   filter
+   (
+      summarize
+      (
+         'Internet Sales',
+         'Product'[Product Name],
+         'Product Subcategory'[Product Subcategory Name],
+         'Product Category'[Product Category Name],
+         'Date'[Calendar Year],
+         "Total Sales Amount", sum('Internet Sales'[Sales Amount]),
+         "Total Cost", sum('Internet Sales'[Total Product Cost])
+      ),
+      'Date'[Calendar Year] > 2006
+   )
+)
+order by
+   'Product'[Product Name],
+   'Date'[Calendar Year]
